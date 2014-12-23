@@ -1,13 +1,14 @@
-=== eBot Matches Viewer ===
+=== Simple Staff List ===
 Contributors: Boudjelal Yannick *Bouman*
 Tags: eBot, matche, matches, match, matchs, 
 Requires at least: 3.0
 Tested up to: 3.8.1
 Stable tag: 3.8.1
-License: GPLv2 or later
+License: 
 License URI: https://github.com/Asso-nOStReSs/eBot-matches-viewer
 
-Un simple widget pour intégrer les matchs de l'eBot sur votre site.
+Un simple widget pour intégrer les matchs de l'eBot sur votre site communautaire.
+A simple widget to integrate the eBot matches on your community site.
 
 == Description ==
 Salut à tous,
@@ -23,17 +24,17 @@ Simple and effective.
 == Installation ==
 
 1. Upload the `ebot-matches-viewer` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Configure options
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Configure options
 
 Options "A" :  Your server Mysql eBot is different that website.
 
     IP-ebot           		 IP-web
      ebot                  serveur web
      ____                     ____
-    |    |    Connection     |    |
-    |    | <---------------> |    |
-    |____|  mysql distant    |____|
+	|    |    Connection     |    |
+	|    | <---------------> |    |
+	|____|  mysql distant    |____|
 	
 	Step 1: Give power in phpmyadmin on Server eBot:
 			SQL Command : 
@@ -52,38 +53,38 @@ Options "A" :  Your server Mysql eBot is different that website.
 				# bind-address = 127.0.0.1
 			Restart :
 				/etc/init.d/mysql restart
-
 				
 Ready You can configure Widget for connect on database Distant.
-			
-Options "B" :  eBot online (http://ebot.esport-tools.net/)       -------------------------------------->        En developpement pour avoir une connection vers la base sql de eBoT online 
+				
+Options "B" :  eBot online (http://ebot.esport-tools.net/) In development.
 
  ebot.esport-tools.net     	 IP-web
      ebot                  serveur web
      ____                     ____
-    |    |    Connection     |    |
-    |    | <---------------> |    |
-    |____|  mysql distant    |____|
-
-
+	|    |    Connection     |    |
+	|    | <---------------> |    |
+	|____|  mysql distant    |____|
+	
 Options "C" :  Your server Mysql eBot and website are the same.
 
  IP-ebot = IP-web
  serveur web + ebot
      ________
-    |        |
-    |        |
-    |________|
+	|        |
+	|        |
+	|________|
 				
-Ready You can configure Widget for connect on database local with user and password  -------> (Exemple : user=ebotv3 password=ebotv3).
+Ready You can configure Widget for connect on database local with user and password (Exemple : user=ebotv3 password=ebotv3).
 
-4.Configure Number of matches to display
+2.Configure Number of matches to display
 
 == Frequently Asked Questions ==
 
 Write at : ndjbouman@gmail.com
 
 == Screenshots ==
+1. Options Widget
+2. Widget Client view
 
 == Changelog ==
 = 1.5 = Preview
