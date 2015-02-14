@@ -1,9 +1,9 @@
-=== Simple Staff List ===
+﻿=== Simple Staff List ===
 Contributors: Boudjelal Yannick *Bouman*
 Tags: eBot, matche, matches, match, matchs, 
-Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 3.8.1
+Requires at least: 4.1
+Tested up to: 4.1
+Stable tag: 4.1
 License: 
 License URI: https://github.com/Asso-nOStReSs/eBot-matches-viewer
 
