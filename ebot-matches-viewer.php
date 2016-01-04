@@ -93,21 +93,8 @@ class emv_widget extends WP_widget{
 
         $nbrmax = $d["nbrmax"];
         $web    = $d["web"];
-        switch ($d['typeconnect']) {
-            case 'A':
-                /* Connection Distante mysql */
-                $this->initConnection($d['host'], $d['dbnamedistant'], $d['userdistant'], $d['passworddistant']);
-                break;
-            case 'B':
-                die("Option B en developement");
-                break;
-            case 'C':
-                $this->initConnection('localhost', $d['dbnamelocal'], $d['userlocal'], $d['passwordlocal']);
-                break;
-            default:
-                die('Unknown ebot error');
-                break;
-        }
+
+        $this->initConnection($d['dbhost'], $d['dbname'], $d['dbuser'], $d['dbpassword']);
 
         try{
             $matches = $this->getMatches($nbrmax);
@@ -149,10 +136,9 @@ class emv_widget extends WP_widget{
         $defaut = array(
             "titre" => "eBoT Matches",
             "nbrmax" => "5",
-            "userdistant" => "ebotv3",
-            "userlocal" => "ebotv3",
-            "dbnamedistant" => "ebotv3",
-            "dbnamelocal" => "ebotv3"
+            "dbhost" => "localhost",
+            "dbuser" => "ebotv3",
+            "dbname" => "ebotv3"
         );
         $d = wp_parse_args($d,$defaut)
         ?>
@@ -175,27 +161,9 @@ class emv_widget extends WP_widget{
 
             </p>
 
-            <p>
-
-                <label for="<?php echo $this->get_field_id("typeconnect"); ?>">Type de connection : </label>
-
-                <select value="<?php echo $d["typeconnect"];?>" name="<?php echo $this->get_field_name("typeconnect");?>" id="<?php echo $this->get_field_id("typeconnect"); ?>">
-
-                    <option value="A">Distant (Option:A)</option>
-
-                    <option value="B">Online (Option:B)</option>
-
-                    <option value="C">Local (Option:C)</option>
-
-                </select>
-
-            </p>
-
         </div>
 
         <div id="A" class="divoption">
-
-            <p>Option A "Distant":</p>
 
             <p>
 
@@ -207,81 +175,33 @@ class emv_widget extends WP_widget{
 
             <p>
 
-                <label for="<?php echo $this->get_field_id("host"); ?>">Ip du Host : </label>
+                <label for="<?php echo $this->get_field_id("dbhost"); ?>">Ip du Host : </label>
 
-                <input value="<?php echo $d["host"];?>" name="<?php echo $this->get_field_name("host"); ?>" id="<?php echo $this->get_field_id("host"); ?>" type="text"/>
-
-            </p>
-
-            <p>
-
-                <label for="<?php echo $this->get_field_id("dbnamedistant"); ?>">Nom de la Base de donnée : </label>
-
-                <input value="<?php echo $d["dbnamedistant"];?>" name="<?php echo $this->get_field_name("dbnamedistant"); ?>" id="<?php echo $this->get_field_id("dbnamedistant"); ?>" type="text"/>
+                <input value="<?php echo $d["dbhost"];?>" name="<?php echo $this->get_field_name("dbhost"); ?>" id="<?php echo $this->get_field_id("dbhost"); ?>" type="text"/>
 
             </p>
 
             <p>
 
-                <label for="<?php echo $this->get_field_id("userdistant"); ?>">Utilisateur "login" : </label>
+                <label for="<?php echo $this->get_field_id("dbname"); ?>">Nom de la Base de donnée : </label>
 
-                <input value="<?php echo $d["userdistant"];?>" name="<?php echo $this->get_field_name("userdistant"); ?>" id="<?php echo $this->get_field_id("userdistant"); ?>" type="text"/>
-
-            </p>
-
-            <p>
-
-                <label for="<?php echo $this->get_field_id("passworddistant"); ?>">Password : </label>
-
-                <input value="<?php echo $d["passworddistant"];?>" name="<?php echo $this->get_field_name("passworddistant"); ?>" id="<?php echo $this->get_field_id("passworddistant"); ?>" type="text"/>
-
-            </p>
-
-        </div>
-
-        <hr>
-
-        <div id="B" class="divoption">
-
-            <p>Option B "Online": "Non fonctionnel"</p>
-
-            <p> En developement !
-
-                <!-- <label for="<?php echo $this->get_field_id("nom-team"); ?>">Nom Team à afficher : </label>
-
-						<input value="<?php echo $d["nom-team"];?>" name="<?php echo $this->get_field_name("nom-team"); ?>" id="<?php echo $this->get_field_id("nom-team"); ?>" type="text"/> -->
-
-            </p>
-
-        </div>
-
-        <hr>
-
-        <div id="C" class="divoption">
-
-            <p>Option C "Local:</p>
-
-            <p>
-
-                <label for="<?php echo $this->get_field_id("dbnamelocal"); ?>">Nom de la Base de donnée : </label>
-
-                <input value="<?php echo $d["dbnamelocal"];?>" name="<?php echo $this->get_field_name("dbnamelocal"); ?>" id="<?php echo $this->get_field_id("dbnamelocal"); ?>" type="text"/>
+                <input value="<?php echo $d["dbname"];?>" name="<?php echo $this->get_field_name("dbname"); ?>" id="<?php echo $this->get_field_id("dbname"); ?>" type="text"/>
 
             </p>
 
             <p>
 
-                <label for="<?php echo $this->get_field_id("userlocal"); ?>">Utilisateur "login" : </label>
+                <label for="<?php echo $this->get_field_id("dbuser"); ?>">Utilisateur "login" : </label>
 
-                <input value="<?php echo $d["userlocal"];?>" name="<?php echo $this->get_field_name("userlocal"); ?>" id="<?php echo $this->get_field_id("userlocal"); ?>" type="text"/>
+                <input value="<?php echo $d["dbuser"];?>" name="<?php echo $this->get_field_name("dbuser"); ?>" id="<?php echo $this->get_field_id("dbuser"); ?>" type="text"/>
 
             </p>
 
             <p>
 
-                <label for="<?php echo $this->get_field_id("passwordlocal"); ?>">Password : </label>
+                <label for="<?php echo $this->get_field_id("dbpassword"); ?>">Password : </label>
 
-                <input value="<?php echo $d["passwordlocal"];?>" name="<?php echo $this->get_field_name("passwordlocal"); ?>" id="<?php echo $this->get_field_id("passwordlocal"); ?>" type="text"/>
+                <input value="<?php echo $d["dbpassword"];?>" name="<?php echo $this->get_field_name("dbpassword"); ?>" id="<?php echo $this->get_field_id("dbpassword"); ?>" type="text"/>
 
             </p>
 
