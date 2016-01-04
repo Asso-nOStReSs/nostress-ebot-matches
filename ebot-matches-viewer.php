@@ -71,6 +71,21 @@ class emv_widget extends WP_widget{
         return true;
     }
 
+    function getMatches($nbrMax)
+    {
+        try{
+            $query = $this->connection->prepare('SELECT id, team_a_name, team_b_name, score_a, score_b FROM matchs ORDER BY id DESC LIMIT 0, '.$nbrMax);
+
+            if ($query->execute()) {
+                return $query->fetchAll();
+            }
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
     function widget($args,$d){
         extract($args);
         echo $before_widget;
@@ -94,19 +109,25 @@ class emv_widget extends WP_widget{
                 break;
         }
 
+        try{
+            $matches = $this->getMatches($nbrmax);
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
         /* TABLEAU */
         echo'<table class="ebot">';
         echo "<tr><th class='ebot'>#Id</th><th class='ebot'>Score</th></tr>";
 
-        while($row = $affreq->fetch(PDO::FETCH_ASSOC)){
-            $team1name= $row['team_a_name'];
-            $team2name= $row['team_b_name'];
-            $team1scr= $row['score_a'];
-            $team2src= $row['score_b'];
+        foreach($matches as $match){
+            $team1name= $match['team_a_name'];
+            $team2name= $match['team_b_name'];
+            $team1scr= $match['score_a'];
+            $team2src= $match['score_b'];
 
             echo "<tr class='border_bottom'><td>";
-            echo '<a href="http://'.$web.'/eBot-CSGO/matchs/view/'.$row['id'].'" target="_blank">'.$row['id'].'</a>';
-            echo '</td><td><a href="http://'.$web.'/eBot-CSGO/matchs/view/'.$row['id'].'" target="_blank">';
+            echo '<a href="http://'.$web.'/eBot-CSGO/matchs/view/'.$match['id'].'" target="_blank">'.$match['id'].'</a>';
+            echo '</td><td><a href="http://'.$web.'/eBot-CSGO/matchs/view/'.$match['id'].'" target="_blank">';
 
             if($team1scr>$team2src)
                 echo '<strong>'.$team1name.'&nbsp;-&nbsp;<font color="green">'.$team1scr.'</strong></font>&nbsp;:&nbsp;<font color="red">'.$team2src.'</font>&nbsp;-&nbsp;'.$team2name.'';
