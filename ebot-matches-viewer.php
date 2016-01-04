@@ -163,7 +163,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("titre"); ?>">Titre : </label>
 
-                <input value="<?echo $d["titre"];?>" name="<?php echo $this->get_field_name("titre"); ?>" id="<?php echo $this->get_field_id("titre"); ?>" type="text"/>
+                <input value="<?php echo $d["titre"];?>" name="<?php echo $this->get_field_name("titre"); ?>" id="<?php echo $this->get_field_id("titre"); ?>" type="text"/>
 
             </p>
 
@@ -171,7 +171,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("nbrmax"); ?>">Nombre max de match : </label>
 
-                <input value="<?echo $d["nbrmax"];?>" name="<?php echo $this->get_field_name("nbrmax"); ?>" id="<?php echo $this->get_field_id("nbrmax"); ?>" type="text" maxlength="1"/>
+                <input value="<?php echo $d["nbrmax"];?>" name="<?php echo $this->get_field_name("nbrmax"); ?>" id="<?php echo $this->get_field_id("nbrmax"); ?>" type="text" maxlength="1"/>
 
             </p>
 
@@ -179,7 +179,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("typeconnect"); ?>">Type de connection : </label>
 
-                <select value="<?echo $d["typeconnect"];?>" name="<?php echo $this->get_field_name("typeconnect");?>" id="<?php echo $this->get_field_id("typeconnect"); ?>">
+                <select value="<?php echo $d["typeconnect"];?>" name="<?php echo $this->get_field_name("typeconnect");?>" id="<?php echo $this->get_field_id("typeconnect"); ?>">
 
                     <option value="A">Distant (Option:A)</option>
 
@@ -201,7 +201,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("web"); ?>">Website eBot : </label>
 
-                <input value="<?echo $d["web"];?>" name="<?php echo $this->get_field_name("web"); ?>" id="<?php echo $this->get_field_id("web"); ?>" type="text"/>/eBot-CSGO/
+                <input value="<?php echo $d["web"];?>" name="<?php echo $this->get_field_name("web"); ?>" id="<?php echo $this->get_field_id("web"); ?>" type="text"/>/eBot-CSGO/
 
             </p>
 
@@ -209,7 +209,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("host"); ?>">Ip du Host : </label>
 
-                <input value="<?echo $d["host"];?>" name="<?php echo $this->get_field_name("host"); ?>" id="<?php echo $this->get_field_id("host"); ?>" type="text"/>
+                <input value="<?php echo $d["host"];?>" name="<?php echo $this->get_field_name("host"); ?>" id="<?php echo $this->get_field_id("host"); ?>" type="text"/>
 
             </p>
 
@@ -217,7 +217,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("dbnamedistant"); ?>">Nom de la Base de donnée : </label>
 
-                <input value="<?echo $d["dbnamedistant"];?>" name="<?php echo $this->get_field_name("dbnamedistant"); ?>" id="<?php echo $this->get_field_id("dbnamedistant"); ?>" type="text"/>
+                <input value="<?php echo $d["dbnamedistant"];?>" name="<?php echo $this->get_field_name("dbnamedistant"); ?>" id="<?php echo $this->get_field_id("dbnamedistant"); ?>" type="text"/>
 
             </p>
 
@@ -225,7 +225,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("userdistant"); ?>">Utilisateur "login" : </label>
 
-                <input value="<?echo $d["userdistant"];?>" name="<?php echo $this->get_field_name("userdistant"); ?>" id="<?php echo $this->get_field_id("userdistant"); ?>" type="text"/>
+                <input value="<?php echo $d["userdistant"];?>" name="<?php echo $this->get_field_name("userdistant"); ?>" id="<?php echo $this->get_field_id("userdistant"); ?>" type="text"/>
 
             </p>
 
@@ -233,7 +233,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("passworddistant"); ?>">Password : </label>
 
-                <input value="<?echo $d["passworddistant"];?>" name="<?php echo $this->get_field_name("passworddistant"); ?>" id="<?php echo $this->get_field_id("passworddistant"); ?>" type="text"/>
+                <input value="<?php echo $d["passworddistant"];?>" name="<?php echo $this->get_field_name("passworddistant"); ?>" id="<?php echo $this->get_field_id("passworddistant"); ?>" type="text"/>
 
             </p>
 
@@ -249,7 +249,7 @@ class emv_widget extends WP_widget{
 
                 <!-- <label for="<?php echo $this->get_field_id("nom-team"); ?>">Nom Team à afficher : </label>
 
-						<input value="<?echo $d["nom-team"];?>" name="<?php echo $this->get_field_name("nom-team"); ?>" id="<?php echo $this->get_field_id("nom-team"); ?>" type="text"/> -->
+						<input value="<?php echo $d["nom-team"];?>" name="<?php echo $this->get_field_name("nom-team"); ?>" id="<?php echo $this->get_field_id("nom-team"); ?>" type="text"/> -->
 
             </p>
 
@@ -265,7 +265,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("dbnamelocal"); ?>">Nom de la Base de donnée : </label>
 
-                <input value="<?echo $d["dbnamelocal"];?>" name="<?php echo $this->get_field_name("dbnamelocal"); ?>" id="<?php echo $this->get_field_id("dbnamelocal"); ?>" type="text"/>
+                <input value="<?php echo $d["dbnamelocal"];?>" name="<?php echo $this->get_field_name("dbnamelocal"); ?>" id="<?php echo $this->get_field_id("dbnamelocal"); ?>" type="text"/>
 
             </p>
 
@@ -273,7 +273,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("userlocal"); ?>">Utilisateur "login" : </label>
 
-                <input value="<?echo $d["userlocal"];?>" name="<?php echo $this->get_field_name("userlocal"); ?>" id="<?php echo $this->get_field_id("userlocal"); ?>" type="text"/>
+                <input value="<?php echo $d["userlocal"];?>" name="<?php echo $this->get_field_name("userlocal"); ?>" id="<?php echo $this->get_field_id("userlocal"); ?>" type="text"/>
 
             </p>
 
@@ -281,7 +281,7 @@ class emv_widget extends WP_widget{
 
                 <label for="<?php echo $this->get_field_id("passwordlocal"); ?>">Password : </label>
 
-                <input value="<?echo $d["passwordlocal"];?>" name="<?php echo $this->get_field_name("passwordlocal"); ?>" id="<?php echo $this->get_field_id("passwordlocal"); ?>" type="text"/>
+                <input value="<?php echo $d["passwordlocal"];?>" name="<?php echo $this->get_field_name("passwordlocal"); ?>" id="<?php echo $this->get_field_id("passwordlocal"); ?>" type="text"/>
 
             </p>
 
@@ -289,7 +289,7 @@ class emv_widget extends WP_widget{
 
         <p>Merci DeStrO pour l'eBOt. Widget dev. par Bouman.</p>
 
-        <?
+        <?php
 
     }
 
