@@ -38,6 +38,11 @@ function emv_init(){
 }
 
 class emv_widget extends WP_widget{
+    /**
+     * @var PDO
+     */
+    protected $connection;
+
     function emv_widget() {
         $options = array(
             "classname"=>"ebot-matches",
@@ -51,56 +56,42 @@ class emv_widget extends WP_widget{
         $this->WP_widget("emv-ebot-matches","eBoT Matches Viewer",$options);
     }
 
+    function initConnection($host, $name, $user, $password)
+    {
+        if (empty($this->connection)) {
+            try {
+                $this->connection = new PDO('mysql:host='.$host.';dbname='.$name, $user, $password);
+            } catch (PDOException $e) {
+                echo 'Connexion échouée : ' . $e->getMessage();
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function widget($args,$d){
         extract($args);
         echo $before_widget;
         echo $before_title.$d["titre"].$after_title;
 
-        /* OPTION A */
-        if ($d["typeconnect"] == "A"){
-
-            /* Connection Distante mysql */
-            $web= $d["web"];
-            $host= $d["host"];
-            $dbnamedist= $d["dbnamedistant"];
-            $userdist= $d["userdistant"];
-            $passworddist= $d["passworddistant"];
-            $nbrmax= $d["nbrmax"];
-
-            try{
-                $bdd = new PDO('mysql:host='.$host.';dbname='.$dbnamedist.'', ''.$userdist.'', ''.$passworddist.'');
-                $affreq = $bdd->prepare('SELECT id, team_a_name, team_b_name, score_a, score_b FROM matchs ORDER BY id DESC LIMIT 0, '.$nbrmax.'');
-                $affreq->execute();
-            }
-            catch (Exception $e)
-            {
-                die('Erreur : ' . $e->getMessage());
-            }
-
-        }
-
-        /* OPTION B */
-        if ($d["typeconnect"] == "B"){
-            echo "Option B en developement";
-        }
-
-        /* OPTION C */
-        if ($d["typeconnect"] == "C"){
-            $dbnamelocal= $d["dbnamelocal"];
-            $userlocal= $d["userlocal"];
-            $passwordlocal= $d["passwordlocal"];
-            $nbrmax= $d["nbrmax"];
-
-            try{
-                $bdd = new PDO('mysql:host=localhost;dbname='.$dbnamelocal.'', ''.$userlocal.'', ''.$passwordlocal.'');
-                $req = 'SELECT id, team_a_name, team_b_name, score_a, score_b FROM matchs ORDER BY id DESC LIMIT 0, '.$nbrmax.'';
-                echo 'Connecter à la base Mysql locale. <br />';
-            }
-            catch (Exception $e)
-            {
-                die('Erreur : ' . $e->getMessage());
-            }
-
+        $nbrmax = $d["nbrmax"];
+        $web    = $d["web"];
+        switch ($d['typeconnect']) {
+            case 'A':
+                /* Connection Distante mysql */
+                $this->initConnection($d['host'], $d['dbnamedistant'], $d['userdistant'], $d['passworddistant']);
+                break;
+            case 'B':
+                die("Option B en developement");
+                break;
+            case 'C':
+                $this->initConnection('localhost', $d['dbnamelocal'], $d['userlocal'], $d['passwordlocal']);
+                break;
+            default:
+                die('Unknown ebot error');
+                break;
         }
 
         /* TABLEAU */
@@ -125,10 +116,8 @@ class emv_widget extends WP_widget{
                 echo ''.$team1name.'&nbsp;-&nbsp;<font color="bleue">'.$team1scr.'</font>&nbsp;:&nbsp;<font color="bleue">'.$team2src.'</font>&nbsp;-&nbsp;'.$team2name.'';
             echo "</a></td></tr>";
         }
-
         echo'</table>';
         echo $after_widget;
-        $bdd == null;
     }
 
     function update($new,$old){
